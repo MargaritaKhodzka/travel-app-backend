@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
   belongs_to :destination
-  validates :name, uniqueness: true
+  validates :title, uniqueness: true
 end
