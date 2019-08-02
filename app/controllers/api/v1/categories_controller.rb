@@ -1,17 +1,18 @@
 class Api::V1::CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :update, :destroy]
+  before_action :set_destination
 
   def index
-    @categories = Category.all
+    @categories = @destination.categories
     render json: @categories
   end
 
   def show
+    @category = @destination.categories.find_by(id: params[:id])
     render json: @category
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = @destination.categories.new(category_params)
     if @category.save
       render json: @category
     else
@@ -33,10 +34,10 @@ class Api::V1::CategoriesController < ApplicationController
 
   private
   def category_params
-    params.require(:category).permit(:title)
+    params.require(:category).permit(:title, :destination_id)
   end
 
-  def set_category
-    @category = Category.find(params[:id])
+  def set_destination
+    @destination = Destination.find(params[:destination_id])
   end
 end
