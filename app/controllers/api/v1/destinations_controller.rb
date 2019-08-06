@@ -29,6 +29,7 @@ class Api::V1::DestinationsController < ApplicationController
 
   def destroy
     @destination.destroy
+    render json: @destinations
   end
 
   private
