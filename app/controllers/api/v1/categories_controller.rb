@@ -14,7 +14,7 @@ class Api::V1::CategoriesController < ApplicationController
   def create
     @category = @destination.categories.new(category_params)
     if @category.save
-      render json: @category
+      render json: @destination
     else
       render json: {error: 'Unable to create a new category.'}
     end
