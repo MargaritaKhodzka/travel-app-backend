@@ -20,7 +20,10 @@ class Api::V1::DestinationsController < ApplicationController
   end
 
   def update
+    # binding.pry
     if @destination.update(destination_params)
+      @destination.toggle!(:visited)
+      @destination.save
       render json: @destination
     else
       render json: {error: 'Unable to edit the destination.'}
