@@ -21,8 +21,7 @@ class Api::V1::DestinationsController < ApplicationController
 
   def update
     # binding.pry
-    if @destination.update(destination_params)
-      @destination.toggle!(:visited)
+    if @destination.update(visited: !@destination.visited?)
       @destination.save
       render json: @destination
     else
