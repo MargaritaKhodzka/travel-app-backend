@@ -36,7 +36,7 @@ class Api::V1::DestinationsController < ApplicationController
 
   private
   def destination_params
-    params.require(:destination).permit(:name, :country, :image, :visited)
+    params.require(:destination).permit(:name, :country, :image, :visited, :bucket_list)
   end
 
   def set_destination
