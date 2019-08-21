@@ -20,14 +20,6 @@ class Api::V1::CategoriesController < ApplicationController
     end
   end
 
-  def update
-    if @category.update(category_params)
-      render json: @category
-    else
-      render json: {error: 'Unable to update the category.'}
-    end
-  end
-
   def destroy
     @category = Category.find(params['id'])
     @category.destroy
