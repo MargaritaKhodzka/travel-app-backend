@@ -20,8 +20,7 @@ class Api::V1::DestinationsController < ApplicationController
   end
 
   def update
-    # binding.pry
-    if @destination.update(visited: !@destination.visited?)
+    if @destination.update(destination_params)
       @destination.save
       render json: @destination
     else
@@ -36,7 +35,7 @@ class Api::V1::DestinationsController < ApplicationController
 
   private
   def destination_params
-    params.require(:destination).permit(:name, :country, :image, :visited, :bucket_list)
+    params.require(:destination).permit(:id, :name, :country, :image, :visited, :bucket_list)
   end
 
   def set_destination
