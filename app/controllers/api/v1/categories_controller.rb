@@ -29,7 +29,9 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def destroy
+    @category = Category.find(params['id'])
     @category.destroy
+    render json: @destination
   end
 
   private
