@@ -22,6 +22,7 @@ class Api::V1::CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params['id'])
+    @destination = Destination.find(@category.destination_id)
     @category.destroy
     render json: @destination
   end
